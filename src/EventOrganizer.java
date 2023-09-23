@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class EventOrganizer {
 
@@ -21,26 +22,45 @@ public class EventOrganizer {
     }
 
     private void processCommand(String command) {
-        String [] tokens = command.split(" ");
-        String action = tokens[0];
+        StringTokenizer tokenizer = new StringTokenizer(command);
+        if (tokenizer.hasMoreTokens()) {
+            String action = tokenizer.nextToken();
 
-        switch (action) {
-            case ("A"):
-                if (tokens.length == 7) {
-                    String dateString = tokens[1];
-                    String timeSlot = tokens[2];
-                    String Location = tokens[3];
-                    String department = tokens[4];
-                    String email = tokens[5];
-                    int duration = Integer.parseInt(tokens[6]);
+            switch (action) {
+                case "A":
+                    if (tokenizer.countTokens() == 6) {
+                        String dateString = tokenizer.nextToken();
+                        String timeSlot = tokenizer.nextToken();
+                        String location = tokenizer.nextToken();
+                        String department = tokenizer.nextToken();
+                        String email = tokenizer.nextToken();
+                        int duration = Integer.parseInt(tokenizer.nextToken());
 
+                        Date date = Date.fromDateStr(dateString);
+                        Timeslot timeslot = Timeslot.valueOf(timeSlot);
+                        Location locationstr = Location.valueOf(location);
+                        Department departmentstr = Department.valueOf(department);
+                        Contact contact = new Contact(departmentstr, email);
+                        
+                        
+                        Event event = new Event(date, timeslot, locationstr, duration, contact);
+
+
+                    }
+                    break;
+                case "R":
+                    if (tokenizer.countTokens() == 3) {
+                        String dateString = tokenizer.nextToken();
+                        String timeSlot = tokenizer.nextToken();
+                        String location = tokenizer.nextToken();
+
+                        // Now you have the tokens for the "R" command
+                    }
+                    break;
+                // Handle other commands as needed
+                default:
+                    throw new IllegalStateException("Unexpected value: " + action);
             }
-            case ("R"):
-                if (tokens.length == 4) {
-                    String dateString = tokens[1];
-                    String timeSlot = tokens[2];
-                    String Location = tokens[3];
-                }
         }
     }
 }

@@ -6,12 +6,15 @@ public enum Location {
     AB2225("Academic Building, College Avenue"),
     MU302("Murray Hall, College Avenue");
 
-    private String description;
+    private final String fullName;
 
-    Location(String description) {
-        this.description = description;
+    Location(String fullName) {
+        this.fullName = fullName;
     }
 
-    // Implement methods as needed.
+    @Override
+    public String toString() {
+        return fullName;
+    }
 }
 
