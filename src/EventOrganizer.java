@@ -46,6 +46,7 @@ public class EventOrganizer {
                         Event event = new Event(date, timeslot, locationstr, duration, contact);
 
 
+
                     }
                     break;
                 case "R":
