@@ -22,6 +22,9 @@ public class Date implements Comparable<Date> {
         }
     }
 
+    public boolean isValid() {
+        return true;
+    }
     @Override
     public int compareTo(Date o) {
         return 0;

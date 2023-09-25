@@ -32,11 +32,11 @@ public class EventCalender {
         return false;
     }
     public boolean remove(Event event) {
-
+        return false;
     }
     public boolean contains(Event event) {
-        for (Event target: events) {
-            if (event.compareTo(target) == 0) {
+        for (Event target : events) {
+            if (target != null && event.compareTo(target) == 0) {
                 return true;
             }
         }

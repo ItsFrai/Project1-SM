@@ -40,22 +40,34 @@ public class EventOrganizer {
 
                         Date date = Date.fromDateStr(dateString);
                         Timeslot timeslot = Timeslot.valueOf(timeSlot);
-                        Location locationstr = Location.valueOf(location);
-                        Department departmentstr = Department.valueOf(department);
-                        Contact contact = new Contact(departmentstr, email);
-                        
-                        
-                        Event event = new Event(date, timeslot, locationstr, duration, contact);
-                        EventCalender eventCalender = new EventCalender();
+                        Location locationstr = Location.valueOf(location.toUpperCase());
 
-                        boolean added = eventCalender.add(event);
-                        boolean contains = eventCalender.contains(event);
+                        try {
+                            Department departmentstr = Department.valueOf(department.toUpperCase());
+                            Contact contact = new Contact(departmentstr, email);
 
+                            // Check if the contact is valid
+                            boolean isValidContact = contact.isValid();
 
-                        if (added) {
-                            System.out.println("Event added");
-                        } else if (contains) {
-                            System.out.println("The event is already on the calendar.");
+                            if (!isValidContact) {
+                                System.out.println("Invalid contact information!");
+                            } else {
+                                Event event = new Event(date, timeslot, locationstr, duration, contact);
+
+                                EventCalender eventCalender = new EventCalender();
+
+                                boolean added = eventCalender.add(event);
+                                boolean contains = eventCalender.contains(event);
+
+                                //fix contains method
+
+                                if (added) {
+                                    System.out.println("Event added");
+                                }
+
+                            }
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Invalid contact information!");
                         }
                     }
                     break;
@@ -68,7 +80,7 @@ public class EventOrganizer {
 
                         EventCalender eventCalender = new EventCalender();
 
-                        boolean removed = eventCalender.remove()
+
 
                     }
                     break;

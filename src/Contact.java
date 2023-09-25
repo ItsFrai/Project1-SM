@@ -5,7 +5,8 @@ public class Contact {
     public Contact(Department department, String email) {
         this.department = department;
         this.email = email;
-
-
+    }
+    public boolean isValid() {
+        return this.department != null && this.email.endsWith("@rutgers.edu");
     }
 }
