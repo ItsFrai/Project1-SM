@@ -1,7 +1,6 @@
 
 public class Event implements Comparable<Event> {
     private Date date;
-
     private Timeslot startTime;
     private Location location;
     private Contact contact;
@@ -20,7 +19,6 @@ public class Event implements Comparable<Event> {
     public int compareTo(Event o) {
         return 0;
     }
-    int i=1;
 }
 
 

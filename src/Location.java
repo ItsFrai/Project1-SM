@@ -1,5 +1,5 @@
 public enum Location {
-    HLL114("Hill Center, Busch"),
+    hll114("Hill Center, Busch"),
     ARC103("Allison Road Classroom, Busch"),
     BE_AUD("Beck Hall, Livingston"),
     TIL232("Till Hall, Livingston"),

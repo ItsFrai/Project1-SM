@@ -8,6 +8,8 @@ public class EventOrganizer {
 
         Scanner scanner = new Scanner(System.in);
 
+
+
         String input;
         while (true) {
             input = scanner.nextLine();
@@ -44,9 +46,17 @@ public class EventOrganizer {
                         
                         
                         Event event = new Event(date, timeslot, locationstr, duration, contact);
+                        EventCalender eventCalender = new EventCalender();
+
+                        boolean added = eventCalender.add(event);
+                        boolean contains = eventCalender.contains(event);
 
 
-
+                        if (added) {
+                            System.out.println("Event added");
+                        } else if (contains) {
+                            System.out.println("The event is already on the calendar.");
+                        }
                     }
                     break;
                 case "R":
@@ -55,12 +65,17 @@ public class EventOrganizer {
                         String timeSlot = tokenizer.nextToken();
                         String location = tokenizer.nextToken();
 
-                        // Now you have the tokens for the "R" command
+
+                        EventCalender eventCalender = new EventCalender();
+
+                        boolean removed = eventCalender.remove()
+
                     }
                     break;
                 // Handle other commands as needed
                 default:
-                    throw new IllegalStateException("Unexpected value: " + action);
+
+                    System.out.println("\n" + action + " is not a valid command");
             }
         }
     }
