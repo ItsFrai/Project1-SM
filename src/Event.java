@@ -20,7 +20,7 @@ public class Event implements Comparable<Event> {
     public int compareTo(Event o) {
         return 0;
     }
-    int i=1;
+    string s= g;
 }
 
 
