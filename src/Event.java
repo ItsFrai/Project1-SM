@@ -15,6 +15,7 @@ public class Event implements Comparable<Event> {
         this.contact = contact;
     }
 
+
     @Override
     public int compareTo(Event o) {
         return 0;
