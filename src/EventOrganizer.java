@@ -3,6 +3,13 @@ import java.util.StringTokenizer;
 
 public class EventOrganizer {
 
+    private final EventCalender eventCalender;
+
+    public EventOrganizer() {
+        eventCalender = new EventCalender();
+
+    }
+
     public void run() {
         System.out.println("Event Organizer running...");
 
@@ -54,9 +61,8 @@ public class EventOrganizer {
                             } else {
                                 Event event = new Event(date, timeslot, locationstr, duration, contact);
 
-                                EventCalender eventCalender = new EventCalender();
-
                                 boolean added = eventCalender.add(event);
+
                                 boolean contains = eventCalender.contains(event);
 
                                 //fix contains method
@@ -76,11 +82,6 @@ public class EventOrganizer {
                         String dateString = tokenizer.nextToken();
                         String timeSlot = tokenizer.nextToken();
                         String location = tokenizer.nextToken();
-
-
-                        EventCalender eventCalender = new EventCalender();
-
-
 
                     }
                     break;

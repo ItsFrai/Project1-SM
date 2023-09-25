@@ -13,6 +13,7 @@ public class EventCalender {
     private void grow() {
 
         Event[] newEvents = new Event[events.length + 4];
+        System.out.println("yes it worked");
 
         // Copy elements from the old array to the new one
         for (int i = 0; i < events.length; i++) {
@@ -22,15 +23,16 @@ public class EventCalender {
         events = newEvents;
     }
     public boolean add(Event event) {
-        if (events.length == numEvents) {
+        if (numEvents == events.length) {
+            System.out.println("grow");
             grow();
-        } else {
-            events[numEvents] = event;
-            numEvents++;
-            return true;
         }
-        return false;
+        events[numEvents] = event;
+        numEvents++;
+        System.out.println(numEvents);
+        return true;
     }
+
     public boolean remove(Event event) {
         return false;
     }
