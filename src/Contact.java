@@ -6,7 +6,6 @@ public class Contact {
         this.department = department;
         this.email = email;
 
-        int L=1;//THis is just a test
-        System.out.println(L);
+
     }
 }
