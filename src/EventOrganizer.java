@@ -3,10 +3,19 @@ import java.util.StringTokenizer;
 
 public class EventOrganizer {
 
+    private final EventCalender eventCalender;
+
+    public EventOrganizer() {
+        eventCalender = new EventCalender();
+
+    }
+
     public void run() {
         System.out.println("Event Organizer running...");
 
         Scanner scanner = new Scanner(System.in);
+
+
 
         String input;
         while (true) {
@@ -38,15 +47,34 @@ public class EventOrganizer {
 
                         Date date = Date.fromDateStr(dateString);
                         Timeslot timeslot = Timeslot.valueOf(timeSlot);
-                        Location locationstr = Location.valueOf(location);
-                        Department departmentstr = Department.valueOf(department);
-                        Contact contact = new Contact(departmentstr, email);
-                        
-                        
-                        Event event = new Event(date, timeslot, locationstr, duration, contact);
+                        Location locationstr = Location.valueOf(location.toUpperCase());
 
+                        try {
+                            Department departmentstr = Department.valueOf(department.toUpperCase());
+                            Contact contact = new Contact(departmentstr, email);
 
+                            // Check if the contact is valid
+                            boolean isValidContact = contact.isValid();
 
+                            if (!isValidContact) {
+                                System.out.println("Invalid contact information!");
+                            } else {
+                                Event event = new Event(date, timeslot, locationstr, duration, contact);
+
+                                boolean added = eventCalender.add(event);
+
+                                boolean contains = eventCalender.contains(event);
+
+                                //fix contains method
+
+                                if (added) {
+                                    System.out.println("Event added");
+                                }
+
+                            }
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Invalid contact information!");
+                        }
                     }
                     break;
                 case "R":
@@ -55,12 +83,12 @@ public class EventOrganizer {
                         String timeSlot = tokenizer.nextToken();
                         String location = tokenizer.nextToken();
 
-                        // Now you have the tokens for the "R" command
                     }
                     break;
                 // Handle other commands as needed
                 default:
-                    throw new IllegalStateException("Unexpected value: " + action);
+
+                    System.out.println("\n" + action + " is not a valid command");
             }
         }
     }
