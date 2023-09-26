@@ -16,33 +16,34 @@ public class Event implements Comparable<Event> {
         this.contact = contact;
     }
 
-
-    @Override
+ @Override
     public boolean equals(Object obj) {
-         if (this==obj) return true;
-         Event event = (Event) obj;
-             return Objects.equals(date, event.date) &&
-                     Objects.equals(startTime, event.startTime) &&
-                     Objects.equals(location, event.location);
+        if (this == obj) return true;
+        Event event = (Event) obj;
+        return date.equals(event.date) &&
+                startTime.equals(event.startTime) &&
+                location.equals(event.location);
+    }
 
 
 
+@Override
+    public String toString(){
 
-}
-     private String ToString(){
         return "[Event Date: " + date + "] [Start: " + startTime + "] [End: " + startTime+duration + "] @" + location + " [Contact: " + contact + "]";
      }
 
+@Override
      public int compareTo(Event another){
 
         int datecomp= this.date.compareTo(another.date);
 
         if (datecomp==0){
-            int timeScomp= this.startTime.compareTo(another.startTime);
-            if (timeScomp==0){
+            int StartTimecomp= this.startTime.compareTo(another.startTime);
+            if (StartTimecomp==0){
                 return 0;
             }
-        return timeScomp;
+        return StartTimecomp;
         }
      return datecomp;
 
