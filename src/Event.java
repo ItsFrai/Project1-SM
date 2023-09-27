@@ -17,14 +17,11 @@ public class Event implements Comparable<Event> {
 
  @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
         Event event = (Event) obj;
-        return date.equals(event.date) &&
-                startTime.equals(event.startTime) &&
-                location.equals(event.location);
+        return this.date.equals(event.date) &&
+                this.startTime.equals(event.startTime) &&
+                this.location.equals(event.location);
     }
-
-
 
 @Override
     public String toString(){
