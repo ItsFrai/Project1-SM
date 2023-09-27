@@ -69,8 +69,9 @@ public class EventOrganizer {
 
                                 if (added) {
                                     System.out.println("Event added");
+                                } else {
+                                    System.out.println("Duplicate event found!");
                                 }
-
                             }
                         } catch (IllegalArgumentException e) {
                             System.out.println("Invalid contact information!");
@@ -82,12 +83,28 @@ public class EventOrganizer {
                         String dateString = tokenizer.nextToken();
                         String timeSlot = tokenizer.nextToken();
                         String location = tokenizer.nextToken();
-
                     }
                     break;
-                // Handle other commands as needed
+                case "P":
+                    eventCalender.print();
+                    break;
+                case "PE":
+                    // Implement the code to print events sorted by date and timeslot
+                    eventCalender.printByDate();
+                    break;
+                case "PC":
+                    // Implement the code to print events sorted by campus and building/room
+                    eventCalender.printByCampus();
+                    break;
+                case "PD":
+                    // Implement the code to print events sorted by department
+                    eventCalender.printByDepartment();
+                    break;
+                case "Q":
+                    System.out.println("Event Organizer terminated");
+                    System.exit(0);
+                    break;
                 default:
-
                     System.out.println("\n" + action + " is not a valid command");
             }
         }

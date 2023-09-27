@@ -8,12 +8,16 @@ public class EventCalender {
         numEvents = 0;
     }
     private int find(Event event) {
-        return 0;
-    } //search an event in the list
+        for (int j = 0; j < numEvents; j++) {
+            if (events[j].equals(event)) {
+                return j;
+            }
+        }
+        return -1;
+    }
     private void grow() {
 
         Event[] newEvents = new Event[events.length + 4];
-        System.out.println("yes it worked");
 
         // Copy elements from the old array to the new one
         for (int i = 0; i < events.length; i++) {
@@ -23,6 +27,11 @@ public class EventCalender {
         events = newEvents;
     }
     public boolean add(Event event) {
+        System.out.println("start");
+        int duplicateIndex = find(event);
+        if (duplicateIndex != -1) {
+            return false;
+        }
         if (numEvents == events.length) {
             System.out.println("grow");
             grow();
@@ -44,7 +53,11 @@ public class EventCalender {
         }
         return false;
     }
-    public void print() { } //print the array as is
+    public void print() {
+            for (int i = 0; i < numEvents; i++) {
+                System.out.println(events[i].toString());
+            }
+        }
     public void printByDate() { } //ordered by date and timeslot
     public void printByCampus() { } //ordered by campus and building/room
     public void printByDepartment(){ }
