@@ -18,9 +18,11 @@ public class Event implements Comparable<Event> {
  @Override
     public boolean equals(Object obj) {
         Event event = (Event) obj;
-        return this.date.equals(event.date) &&
-                this.startTime.equals(event.startTime) &&
-                this.location.equals(event.location);
+        return startTime.equals(event.startTime) &&
+                date.getYear() == event.date.getYear() &&
+                date.getMonth() == event.date.getMonth() &&
+                date.getDay() == event.date.getDay() &&
+                location.equals(event.location);
     }
 
 @Override

@@ -8,9 +8,9 @@ public class EventCalender {
         numEvents = 0;
     }
     private int find(Event event) {
-        for (int j = 0; j < numEvents; j++) {
-            if (events[j].equals(event)) {
-                return j;
+        for (int i = 0; i < numEvents; i++) {
+            if (events[i].equals(event)) {
+                return 0;
             }
         }
         return -1;
