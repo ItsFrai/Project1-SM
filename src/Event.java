@@ -1,4 +1,3 @@
-import java.util.Objects;
 
 public class Event implements Comparable<Event> {
     private final Date date;
