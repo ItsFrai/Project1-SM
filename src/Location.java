@@ -14,7 +14,7 @@ public enum Location {
 
     @Override
     public String toString() {
-        return fullName;
+        return "@" + name() + " (" + fullName + ")";
     }
 }
 

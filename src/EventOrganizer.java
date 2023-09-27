@@ -20,7 +20,7 @@ public class EventOrganizer {
         String input;
         while (true) {
             input = scanner.nextLine();
-            if (input.equalsIgnoreCase("Q")) {
+            if (input.equals("Q")) {
                 break;
             }
             processCommand(input);
@@ -46,7 +46,7 @@ public class EventOrganizer {
                         int duration = Integer.parseInt(tokenizer.nextToken());
 
                         Date date = Date.fromDateStr(dateString);
-                        Timeslot timeslot = Timeslot.valueOf(timeSlot);
+                        Timeslot timeslot = Timeslot.valueOf(timeSlot.toUpperCase());
                         Location locationstr = Location.valueOf(location.toUpperCase());
 
                         try {
@@ -68,9 +68,9 @@ public class EventOrganizer {
                                 //fix contains method
 
                                 if (added) {
-                                    System.out.println("Event added");
+                                    System.out.println("Event added to the calendar.");
                                 } else {
-                                    System.out.println("Duplicate event found!");
+                                    System.out.println("The event is already on the calendar.");
                                 }
                             }
                         } catch (IllegalArgumentException e) {
@@ -83,6 +83,28 @@ public class EventOrganizer {
                         String dateString = tokenizer.nextToken();
                         String timeSlot = tokenizer.nextToken();
                         String location = tokenizer.nextToken();
+
+                        Date date = Date.fromDateStr(dateString);
+
+                        if (!date.isValid()) {
+                            System.out.println(dateString + ": Invalid calendar date!");
+                        } else if (date.isFutureDate()) {
+                            System.out.println(dateString + ": Event date must be a future date!");
+                        } else if (date.isMoreThan6MonthsAway()) {
+                            System.out.println(dateString + ": Event date must be within 6 months!");
+                        } else {
+                            // Create an event to compare for removal
+                            Event eventToRemove = new Event(date, Timeslot.valueOf(timeSlot.toUpperCase()), Location.valueOf(location.toUpperCase()),0,null);
+
+                            // Check if the event is in the calendar
+                            boolean removed = eventCalender.remove(eventToRemove);
+
+                            if (removed) {
+                                System.out.println("Event has been removed from the calendar!");
+                            } else {
+                                System.out.println("Cannot remove; event is not in the calendar!");
+                            }
+                        }
                     }
                     break;
                 case "P":
@@ -100,12 +122,8 @@ public class EventOrganizer {
                     // Implement the code to print events sorted by department
                     eventCalender.printByDepartment();
                     break;
-                case "Q":
-                    System.out.println("Event Organizer terminated");
-                    System.exit(0);
-                    break;
                 default:
-                    System.out.println("\n" + action + " is not a valid command");
+                    System.out.println(action + " is an invalid command!");
             }
         }
     }

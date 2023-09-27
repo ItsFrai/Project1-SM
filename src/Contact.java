@@ -1,6 +1,6 @@
 public class Contact {
-    private Department department;
-    private String email;
+    private final Department department;
+    private final String email;
 
     public Contact(Department department, String email) {
         this.department = department;
@@ -12,7 +12,6 @@ public class Contact {
     }
 
     public String getEmail(){
-
         return email;
     }
 

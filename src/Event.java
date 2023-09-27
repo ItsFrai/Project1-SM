@@ -24,29 +24,29 @@ public class Event implements Comparable<Event> {
                 location.equals(event.location);
     }
 
-@Override
-    public String toString(){
-        int StartHour= startTime.getHour();
-        int StartMin= startTime.getMinute();
-        String NIndicator=startTime.getIndicator();
+    @Override
+    public String toString() {
+        int startHour = startTime.getHour();
+        int startMin = startTime.getMinute();
+        String nIndicator = startTime.getIndicator();
 
-        int EndMin= StartMin+duration;
-        int EndHour=StartHour;
-        if (EndMin>=60){
-            EndHour= EndHour+(EndMin/60);
-            EndMin =StartMin+(EndMin%60);
-            if (EndMin<10){
-                //Something to make the min 0?
-            }
+        int endMin = startMin + duration;
+        int endHour = startHour;
+
+        if (endMin >= 60) {
+            endHour += endMin / 60;
+            endMin = (endMin % 60);
         }
-        if (StartHour==10 && duration>=90){
-            NIndicator="pm";
-        }
-        return "[Event Date: " + date.getMonth()+"/" +date.getDay()+ "/" +date.getYear()+"] " +
-                "[Start:" + StartHour +": "+StartMin +startTime.getIndicator()+  "] " +
-                "[End:" + EndHour + ": "+ EndMin + NIndicator + "] @" + location + " " +
-                "[Contact: " + contact.getDepartment()+","+contact.getEmail() + "]";
-     }
+
+        String formattedStartMin = String.format("%02d", startMin);
+        String formattedEndMin = String.format("%02d", endMin);
+
+        return "[Event Date: " + date.getMonth() + "/" + date.getDay() + "/" + date.getYear() + "] " +
+                "[Start: " + startHour + ":" + formattedStartMin + nIndicator + "] " +
+                "[End: " + endHour + ":" + formattedEndMin + nIndicator + "] " + location + " " +
+                "[Contact: " + contact.getDepartment() + ", " + contact.getEmail() + "]";
+    }
+
 @Override
      public int compareTo(Event another){
 

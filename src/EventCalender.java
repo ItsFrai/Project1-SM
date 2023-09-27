@@ -10,7 +10,7 @@ public class EventCalender {
     private int find(Event event) {
         for (int i = 0; i < numEvents; i++) {
             if (events[i].equals(event)) {
-                return 0;
+                return i;
             }
         }
         return -1;
@@ -27,23 +27,30 @@ public class EventCalender {
         events = newEvents;
     }
     public boolean add(Event event) {
-        System.out.println("start");
         int duplicateIndex = find(event);
         if (duplicateIndex != -1) {
             return false;
         }
         if (numEvents == events.length) {
-            System.out.println("grow");
             grow();
         }
         events[numEvents] = event;
         numEvents++;
-        System.out.println(numEvents);
         return true;
     }
 
     public boolean remove(Event event) {
-        return false;
+        int found = find(event);
+        if (found == -1) {
+            return false;
+    }   else {
+            for (int i = found; i < numEvents - 1; i++) {
+                events[i] = events[i + 1];
+            }
+            events[numEvents - 1] = null;
+            numEvents--;
+            return true;
+        }
     }
     public boolean contains(Event event) {
         for (Event target : events) {
@@ -54,10 +61,15 @@ public class EventCalender {
         return false;
     }
     public void print() {
+        if (numEvents == 0) {
+            System.out.println("Event calendar is empty!");
+        } else {
             for (int i = 0; i < numEvents; i++) {
                 System.out.println(events[i].toString());
             }
         }
+    }
+
     public void printByDate() { } //ordered by date and timeslot
     public void printByCampus() { } //ordered by campus and building/room
     public void printByDepartment(){ }
