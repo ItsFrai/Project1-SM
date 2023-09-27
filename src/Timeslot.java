@@ -9,11 +9,11 @@ public enum Timeslot {
         this.minute = minute;
     }
 
-    private int getHour(){
+    public int getHour(){
         return hour;
     }
 
-    private int getMinute(){
+    public int getMinute(){
         return minute;
     }
 }

@@ -27,7 +27,7 @@ public class Event implements Comparable<Event> {
 
 @Override
     public String toString(){
-        return "[Event Date: " + date + "] [Start: " + startTime + "] [End: " + startTime+duration + "] @" + location + " [Contact: " + contact + "]";
+        return "[Event Date: " + date + "] [Start: " + startTime.getHour() + "] [End: " + startTime+duration + "] @" + location + " [Contact: " + contact + "]";
      }
 @Override
      public int compareTo(Event another){
