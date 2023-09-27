@@ -6,6 +6,16 @@ public class Contact {
         this.department = department;
         this.email = email;
     }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public String getEmail(){
+
+        return email;
+    }
+
     public boolean isValid() {
         return this.department != null && this.email.endsWith("@rutgers.edu");
     }

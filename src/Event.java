@@ -26,7 +26,26 @@ public class Event implements Comparable<Event> {
 
 @Override
     public String toString(){
-        return "[Event Date: " + date + "] [Start: " + startTime + "] [End: " + startTime+duration + "] @" + location + " [Contact: " + contact + "]";
+        int StartHour= startTime.getHour();
+        int StartMin= startTime.getMinute();
+        String NIndicator=startTime.getIndicator();
+
+        int EndMin= StartMin+duration;
+        int EndHour=StartHour;
+        if (EndMin>=60){
+            EndHour= EndHour+(EndMin/60);
+            EndMin =StartMin+(EndMin%60);
+            if (EndMin<10){
+                //Something to make the min 0?
+            }
+        }
+        if (StartHour==10 && duration>=90){
+            NIndicator="pm";
+        }
+        return "[Event Date: " + date.getMonth()+"/" +date.getDay()+ "/" +date.getYear()+"] " +
+                "[Start:" + StartHour +": "+StartMin +startTime.getIndicator()+  "] " +
+                "[End:" + EndHour + ": "+ EndMin + NIndicator + "] @" + location + " " +
+                "[Contact: " + contact.getDepartment()+","+contact.getEmail() + "]";
      }
 @Override
      public int compareTo(Event another){
