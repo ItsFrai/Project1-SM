@@ -45,11 +45,16 @@ public class EventOrganizer {
                         String email = tokenizer.nextToken();
                         int duration = Integer.parseInt(tokenizer.nextToken());
 
+                        if (duration < 30 || duration > 120) {
+                            System.out.println("Event duration must be at least 30 minutes and at most 120 minutes");
+                            break;
+                        }
+
                         Date date = Date.fromDateStr(dateString);
-                        Timeslot timeslot = Timeslot.valueOf(timeSlot.toUpperCase());
-                        Location locationstr = Location.valueOf(location.toUpperCase());
 
                         try {
+                            Location locationstr = Location.valueOf(location.toUpperCase());
+                            Timeslot timeslot = Timeslot.valueOf(timeSlot.toUpperCase());
                             Department departmentstr = Department.valueOf(department.toUpperCase());
                             Contact contact = new Contact(departmentstr, email);
 
@@ -59,22 +64,36 @@ public class EventOrganizer {
                             if (!isValidContact) {
                                 System.out.println("Invalid contact information!");
                             } else {
-                                Event event = new Event(date, timeslot, locationstr, duration, contact);
-
-                                boolean added = eventCalender.add(event);
-
-                                boolean contains = eventCalender.contains(event);
-
-                                //fix contains method
-
-                                if (added) {
-                                    System.out.println("Event added to the calendar.");
+                                if (!date.isValid()) {
+                                    System.out.println(dateString + ": Invalid calendar date!");
+                                } else if (date.isFutureDate()) {
+                                    System.out.println(dateString + ": Event date must be a future date!");
+                                } else if (date.isMoreThan6MonthsAway()) {
+                                    System.out.println(dateString + ": Event date must be within 6 months!");
                                 } else {
-                                    System.out.println("The event is already on the calendar.");
+                                    Event event = new Event(date, timeslot, locationstr, duration, contact);
+
+                                    boolean added = eventCalender.add(event);
+
+                                    boolean contains = eventCalender.contains(event);
+
+                                    //fix contains method
+
+                                    if (added) {
+                                        System.out.println("Event added to the calendar.");
+                                    } else {
+                                        System.out.println("The event is already on the calendar.");
+                                    }
                                 }
                             }
                         } catch (IllegalArgumentException e) {
-                            System.out.println("Invalid contact information!");
+                            if (e.getMessage().contains("Timeslot")) {
+                                System.out.println("Invalid time slot!");
+                            } else if (e.getMessage().contains("Location")) {
+                                System.out.println("Invalid location!");
+                            } else {
+                                System.out.println("Invalid contact information!");
+                            }
                         }
                     }
                     break;

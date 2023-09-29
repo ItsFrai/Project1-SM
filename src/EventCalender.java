@@ -70,7 +70,19 @@ public class EventCalender {
         }
     }
 
-    public void printByDate() { } //ordered by date and timeslot
-    public void printByCampus() { } //ordered by campus and building/room
-    public void printByDepartment(){ }
+    public void printByDate() {
+        if (numEvents == 0) {
+            System.out.println("Event calender is empty!");
+        }
+    } //ordered by date and timeslot
+    public void printByCampus() {
+        if (numEvents == 0) {
+            System.out.println("Event calender is empty!");
+        }
+} //ordered by campus and building/room
+    public void printByDepartment() {
+        if (numEvents == 0) {
+            System.out.println("Event calender is empty!");
+        }
+    }
 }

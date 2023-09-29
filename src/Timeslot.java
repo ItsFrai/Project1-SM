@@ -21,5 +21,6 @@ public enum Timeslot {
     public String getIndicator(){
         return indicator;
     }
+
 }
 
