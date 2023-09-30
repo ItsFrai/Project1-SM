@@ -85,4 +85,19 @@ public class EventCalender {
             System.out.println("Event calender is empty!");
         }
     }
+    public static int[] sorting(int[] obj) { //insertion sort
+
+        for (int i = 1; i < obj.length ; i++) {
+            int j=i;
+            while ((j>0 && obj[j-1]>obj[j])){
+                int temp = obj[j];
+                obj[j]=obj[j-1];
+                obj[j-1]=temp;
+                j--;
+
+            }
+
+        }
+        return obj;
+    }
 }
