@@ -31,9 +31,8 @@ public class Date implements Comparable<Date> {
             int day = Integer.parseInt(parts[1]);
             int year = Integer.parseInt(parts[2]);
             return new Date(year, month, day);
-        } else {
-            throw new IllegalArgumentException("Invalid date format: " + dateString);
         }
+        return null;
     }
 
     public boolean isValid() {
@@ -81,10 +80,28 @@ public class Date implements Comparable<Date> {
     }
 
     @Override
-    public int compareTo(Date o) {
-        // Implement comparison logic here if needed
-        return 0;
+    public int compareTo(Date x) {
+        if (this.year > x.year) {
+            return 1;
+        } else if (this.year < x.year) {
+            return -1;
+        } else { // Years are equal, so compare months
+            if (this.month > x.month) {
+                return 1;
+            } else if (this.month < x.month) {
+                return -1;
+            } else { // Months are equal, so compare days
+                if (this.day > x.day) {
+                    return 1;
+                } else if (this.day < x.day) {
+                    return -1;
+                } else { // Years, months, and days are equal
+                    return 0;
+                }
+            }
+        }
     }
+
 
     public static void main(String[] args) {
         testDayinFeb_nonleap();
@@ -93,22 +110,37 @@ public class Date implements Comparable<Date> {
         }
 
    private static void testDayinFeb_nonleap() {
-
-
-
-        testingresults();
+        Date date = new Date(2023, 2, 29);
+        boolean expectedOutput = false;
+        boolean actualOutput = date.isValid();
+        System.out.println("**Test case #1: # of days in Feb. in a non-leap year is 28");
+        testingresults(date,expectedOutput,actualOutput);
    }
 
    private static void testDayinFeb_leap() {
-
-        testingresults();
+       Date date = new Date(2020, 2, 30);
+       boolean expectedOutput = false;
+       boolean actualOutput = date.isValid();
+       System.out.println("**Test case #2: # of days in Feb. in a leap year is 29");
+       testingresults(date,expectedOutput,actualOutput);
    }
 
    private static void testMonth(){
-
-        testingresults();
+       Date date = new Date(2023, 14, 25);
+       boolean expectedOutput = false;
+       boolean actualOutput = date.isValid();
+       System.out.println("**Test case #3: Month value should be between 1 and 12");
+       testingresults(date,expectedOutput,actualOutput);
    }
-   private static void testingresults() {
+    private static void testingresults(Date date, boolean expected, boolean actual) {
+        System.out.println("Date Input: " + date);
+        System.out.println("Expected Output: " + expected);
+        System.out.println("Actual Output: " + actual);
 
-   }
+        if (expected == actual) {
+            System.out.println("Test Result: Passed\n");
+        } else {
+            System.out.println("Test Result: Failed\n");
+        }
+    }
 }
