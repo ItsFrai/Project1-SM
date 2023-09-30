@@ -85,4 +85,30 @@ public class Date implements Comparable<Date> {
         // Implement comparison logic here if needed
         return 0;
     }
+
+    public static void main(String[] args) {
+        testDayinFeb_nonleap();
+        testDayinFeb_leap();
+        testMonth();
+        }
+
+   private static void testDayinFeb_nonleap() {
+
+
+
+        testingresults();
+   }
+
+   private static void testDayinFeb_leap() {
+
+        testingresults();
+   }
+
+   private static void testMonth(){
+
+        testingresults();
+   }
+   private static void testingresults() {
+
+   }
 }
