@@ -74,30 +74,35 @@ public class EventCalender {
         if (numEvents == 0) {
             System.out.println("Event calender is empty!");
         }
-    } //ordered by date and timeslot
+        for (int i = 0; i < numEvents - 1; i++) {
+            boolean swapped = false;
+            for (int j = 0; j < numEvents - i - 1; j++) {
+                if (events[j].compareTo(events[j + 1]) > 0) {
+                    // Swap events[j] and events[j+1]
+                    Event temp = events[j];
+                    events[j] = events[j + 1];
+                    events[j + 1] = temp;
+                    swapped = true;
+                }
+            }
+            if (!swapped) {
+                break;
+            }
+        }
+
+        // Now, events[] is sorted by date in-place
+        for (int i = 0; i < numEvents; i++) {
+            System.out.println(events[i].toString());
+        }
+    }
     public void printByCampus() {
         if (numEvents == 0) {
             System.out.println("Event calender is empty!");
         }
-} //ordered by campus and building/room
+}
     public void printByDepartment() {
         if (numEvents == 0) {
             System.out.println("Event calender is empty!");
         }
-    }
-    public static int[] sorting(int[] obj) { //insertion sort
-
-        for (int i = 1; i < obj.length ; i++) {
-            int j=i;
-            while ((j>0 && obj[j-1]>obj[j])){
-                int temp = obj[j];
-                obj[j]=obj[j-1];
-                obj[j-1]=temp;
-                j--;
-
-            }
-
-        }
-        return obj;
     }
 }
