@@ -13,5 +13,17 @@ public enum Department {
         return fullName;
     }
 
+
+public String getFullName(){
+        return fullName;
 }
+
+    public String getDInitiall() {
+        return fullName.substring(0, 1);
+    }
+
+
+    }
+
+
 

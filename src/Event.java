@@ -54,8 +54,9 @@ public class Event implements Comparable<Event> {
     }
 
 @Override
+//boolean printByDate, boolean printByCampus
      public int compareTo(Event another) {
-
+//if (printByDate){
     int datecomp = this.date.compareTo(another.date);
 
     if (datecomp > 0) {
@@ -72,9 +73,26 @@ public class Event implements Comparable<Event> {
     if (timeCompare < 0) {
         return -1;
     }
-    return 0;
+    return 0;}
+/*if (printByCampus) {
 
-}
+    int campuscomp = this.location.compareTo(another.location);
+    if (campuscomp > 0) {
+        return 1;
+    }
+    if (campuscomp < 0) {
+        return -1;
+    }
+}*/
+
+
+
+    public Department getDInitial(){
+        return contact.getDepartment();
+
+    }
+
+
     public Location getLocation() {
         return location;
     }
@@ -162,6 +180,7 @@ public class Event implements Comparable<Event> {
             System.out.println("Test Result: Failed\n");
         }
     }
+
 }
 
 
