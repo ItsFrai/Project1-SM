@@ -13,9 +13,6 @@ public class Event implements Comparable<Event> {
         this.duration = duration;
         this.contact = contact;
     }
-    public Contact getContact() {
-        return contact;
-    }
 
     @Override
     public boolean equals(Object obj) {
@@ -75,16 +72,6 @@ public class Event implements Comparable<Event> {
             return -1;
         }
         return 0;}
-/*if (printByCampus) {
-
-    int campuscomp = this.location.compareTo(another.location);
-    if (campuscomp > 0) {
-        return 1;
-    }
-    if (campuscomp < 0) {
-        return -1;
-    }
-}*/
 
 
 
@@ -93,9 +80,12 @@ public class Event implements Comparable<Event> {
 
     }
 
+    public String getCampus() {
+        return location.getCampus();
+    }
 
-    public Location getLocation() {
-        return location;
+    public String getBuilding() {
+        return location.getBuilding();
     }
 
     public static void main(String[] args) {

@@ -56,6 +56,7 @@ public class Date implements Comparable<Date> {
         Calendar currentDate = Calendar.getInstance();
         int currentYear = currentDate.get(Calendar.YEAR);
         int currentMonth = currentDate.get(Calendar.MONTH) + 1;
+        int currentDay = currentDate.get(Calendar.DAY_OF_MONTH);
 
         int futureYear = currentYear;
         int futureMonth = currentMonth + 6;
@@ -63,8 +64,7 @@ public class Date implements Comparable<Date> {
             futureYear += 1;
             futureMonth -= 12;
         }
-        // Compare the event date with the calculated future date
-        return year > futureYear || (year == futureYear && month > futureMonth);
+        return year > futureYear || (year == futureYear && month > futureMonth || (year == futureYear && month == futureMonth && currentDay < day));
     }
 
     private int getDaysInMonth() {

@@ -69,16 +69,20 @@ public class EventCalender {
         if (numEvents == 0) {
             System.out.println("Event calendar is empty!");
         } else {
+            System.out.println("* Event calendar * ");
             for (int i = 0; i < numEvents; i++) {
                 System.out.println(events[i].toString());
             }
+            System.out.println("* end of event calendar *");
         }
     }
 
     public void printByDate() {
         if (numEvents == 0) {
             System.out.println("Event calender is empty!");
+            return;
         }
+
         for (int i = 0; i < numEvents - 1; i++) {
             boolean swapped = false;
             for (int j = 0; j < numEvents - i - 1; j++) {
@@ -94,24 +98,29 @@ public class EventCalender {
                 break;
             }
         }
-
-        // Now, events[] is sorted by date in-place
+        System.out.println("* Event calendar by event date and start time * ");
         for (int i = 0; i < numEvents; i++) {
             System.out.println(events[i].toString());
         }
+        System.out.println("* end of event calendar *");
+
+
     }
 
     public void printByCampus() {
         if (numEvents == 0) {
             System.out.println("Event calender is empty!");
+            return;
         }
         for (int i = 0; i < numEvents - 1; i++) {
             boolean swapped = false;
 
             for (int j = 0; j < numEvents - i - 1; j++) {
-                int locationCompare = events[j].getLocation().compareTo(events[j + 1].getLocation());
+                int campusCompare = events[j].getCampus().compareTo(events[j+1].getCampus());
+                int buildingCompare = events[j].getBuilding().compareTo(events[j+1].getBuilding());
 
-                if (locationCompare > 0) {
+
+                if (campusCompare > 0 || (campusCompare == 0 && buildingCompare > 0)) {
                     // Swap events[j] and events[j+1]
                     Event temp = events[j];
                     events[j] = events[j + 1];
@@ -125,23 +134,24 @@ public class EventCalender {
             }
         }
 
-        // Now, events[] is sorted by location
+        System.out.println("* Event calendar by campus and building *");
         for (int i = 0; i < numEvents; i++) {
             System.out.println(events[i].toString());
-
         }
+        System.out.println("* end of event calendar *");
 
     }
 
     public void printByDepartment() {
         if (numEvents == 0) {
             System.out.println("Event calender is empty!");
+            return;
         }
         for (int i = 0; i < numEvents - 1; i++) {
             boolean swapped = false;
 
             for (int j = 0; j < numEvents - i - 1; j++) {
-                int departmentCompare = events[j].getDInitial().compareTo(events[j + 1].getDInitial());
+                int departmentCompare = events[j].getDInitial().getDInitiall().compareTo(events[j + 1].getDInitial().getDInitiall());
 
                 if (departmentCompare > 0) {
                     // Swap events[j] and events[j+1]
@@ -157,9 +167,10 @@ public class EventCalender {
             }
         }
 
-        // Now, events[] is sorted by department
+        System.out.println("* Event calendar by department * ");
         for (int i = 0; i < numEvents; i++) {
             System.out.println(events[i].toString());
         }
+        System.out.println("* end of event calendar * ");
     }
 }

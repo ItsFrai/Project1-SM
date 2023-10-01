@@ -15,9 +15,8 @@ public class EventOrganizer {
 
         Scanner scanner = new Scanner(System.in);
 
-
-
         String input;
+        System.out.println();
         while (true) {
             input = scanner.nextLine();
             if (input.equals("Q")) {
@@ -142,7 +141,12 @@ public class EventOrganizer {
                     eventCalender.printByDepartment();
                     break;
                 default:
-                    System.out.println(action + " is an invalid command!");
+                    if (action.equals("a")) {
+                        System.out.println();
+                        System.out.println(action + " is an invalid command!");
+                    } else {
+                        System.out.println(action + " is an invalid command!");
+                    }
             }
         }
     }

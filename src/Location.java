@@ -11,6 +11,21 @@ public enum Location {
     Location(String fullName) {
         this.fullName = fullName;
     }
+    public String getCampus() {
+        String[] parts = fullName.split(", ");
+        if (parts.length > 1) {
+            return parts[1].trim();
+        }
+        return "";
+    }
+
+    public String getBuilding() {
+        String[] parts = fullName.split(", ");
+        if (parts.length > 0) {
+            return parts[0].trim();
+        }
+        return "";
+    }
 
     @Override
     public String toString() {
