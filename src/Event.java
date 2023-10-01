@@ -31,7 +31,7 @@ public class Event implements Comparable<Event> {
     public String toString() {
         int startHour = startTime.getHour();
         int startMin = startTime.getMinute();
-        String nIndicator = startTime.getIndicator();
+        String xIndicator = startTime.getIndicator();
 
         int endMin = startMin + duration;
         int endHour = startHour;
@@ -40,6 +40,7 @@ public class Event implements Comparable<Event> {
             endHour += endMin / 60;
             endMin = (endMin % 60);
         }
+        String nIndicator = startTime.getIndicator();
         if (startHour < 12 && endHour >= 12) {
             nIndicator = "pm";
         }
@@ -48,7 +49,7 @@ public class Event implements Comparable<Event> {
         String formattedEndMin = String.format("%02d", endMin);
 
         return "[Event Date: " + date.getMonth() + "/" + date.getDay() + "/" + date.getYear() + "] " +
-                "[Start: " + startHour + ":" + formattedStartMin + nIndicator + "] " +
+                "[Start: " + startHour + ":" + formattedStartMin + xIndicator + "] " +
                 "[End: " + endHour + ":" + formattedEndMin + nIndicator + "] " + location + " " +
                 "[Contact: " + contact.getDepartment() + ", " + contact.getEmail() + "]";
     }
