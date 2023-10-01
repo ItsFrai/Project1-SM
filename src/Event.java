@@ -13,8 +13,11 @@ public class Event implements Comparable<Event> {
         this.duration = duration;
         this.contact = contact;
     }
+    public Contact getContact() {
+        return contact;
+    }
 
- @Override
+    @Override
     public boolean equals(Object obj) {
         Event event = (Event) obj;
         return startTime.equals(event.startTime) &&
@@ -51,28 +54,49 @@ public class Event implements Comparable<Event> {
                 "[Contact: " + contact.getDepartment() + ", " + contact.getEmail() + "]";
     }
 
-@Override
-     public int compareTo(Event another) {
+    @Override
+//boolean printByDate, boolean printByCampus
+    public int compareTo(Event another) {
+//if (printByDate){
+        int datecomp = this.date.compareTo(another.date);
 
-    int datecomp = this.date.compareTo(another.date);
+        if (datecomp > 0) {
+            return 1;
+        }
+        if (datecomp < 0) {
+            return -1;
+        }
 
-    if (datecomp > 0) {
+        int timeCompare = this.startTime.compareTo(another.startTime);
+        if (timeCompare > 0) {
+            return 1;
+        }
+        if (timeCompare < 0) {
+            return -1;
+        }
+        return 0;}
+/*if (printByCampus) {
+
+    int campuscomp = this.location.compareTo(another.location);
+    if (campuscomp > 0) {
         return 1;
     }
-    if (datecomp < 0) {
+    if (campuscomp < 0) {
         return -1;
     }
+}*/
 
-    int timeCompare = this.startTime.compareTo(another.startTime);
-    if (timeCompare > 0) {
-        return 1;
-    }
-    if (timeCompare < 0) {
-        return -1;
-    }
-    return 0;
 
-}
+
+    public Department getDInitial(){
+        return contact.getDepartment();
+
+    }
+
+
+    public Location getLocation() {
+        return location;
+    }
 
     public static void main(String[] args) {
         testEventEqualitybyTime();
@@ -157,7 +181,7 @@ public class Event implements Comparable<Event> {
             System.out.println("Test Result: Failed\n");
         }
     }
-}
 
+}
 
 
