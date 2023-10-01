@@ -13,9 +13,6 @@ public class Event implements Comparable<Event> {
         this.duration = duration;
         this.contact = contact;
     }
-    public Contact getContact() {
-        return contact;
-    }
 
  @Override
     public boolean equals(Object obj) {
@@ -76,9 +73,6 @@ public class Event implements Comparable<Event> {
     return 0;
 
 }
-    public Location getLocation() {
-        return location;
-    }
 
     public static void main(String[] args) {
         testEventEqualitybyTime();
