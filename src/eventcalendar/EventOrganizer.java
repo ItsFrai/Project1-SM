@@ -1,17 +1,33 @@
+
+package eventcalendar;
+
+
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
+/**
+ * EventOrganizer class manages event-related operations and interactions with the user.
+ * Authors: Fraidoon Pourooshasb, Samman Pandey
+ */
 public class EventOrganizer {
 
-    private final EventCalender eventCalender;
+    private final EventCalender eventCalender;// Initialize the EventCalendar instance
 
+    /**
+     * Constructor for EventOrganizer class.
+     * Initializes the EventCalendar.
+     */
     public EventOrganizer() {
         eventCalender = new EventCalender();
 
     }
 
+    /**
+     * Method to run the Event Organizer program.
+     * Accepts user commands and processes them.
+     */
     public void run() {
-        System.out.println("Event Organizer running...");
+        System.out.println("eventcalendar.Event Organizer running...");
 
         Scanner scanner = new Scanner(System.in);
 
@@ -26,9 +42,14 @@ public class EventOrganizer {
         }
         scanner.close();
 
-        System.out.println("Event Organizer terminated");
+        System.out.println("eventcalendar.Event Organizer terminated");
     }
 
+    /**
+     * Process a command entered by the user.
+     *
+     * @param command The user's input command.
+     */
     private void processCommand(String command) {
         StringTokenizer tokenizer = new StringTokenizer(command);
         if (tokenizer.hasMoreTokens()) {
@@ -45,7 +66,7 @@ public class EventOrganizer {
                         int duration = Integer.parseInt(tokenizer.nextToken());
 
                         if (duration < 30 || duration > 120) {
-                            System.out.println("Event duration must be at least 30 minutes and at most 120 minutes");
+                            System.out.println("eventcalendar.Event duration must be at least 30 minutes and at most 120 minutes");
                             break;
                         }
 
@@ -66,9 +87,9 @@ public class EventOrganizer {
                                 if (!date.isValid()) {
                                     System.out.println(dateString + ": Invalid calendar date!");
                                 } else if (date.isFutureDate()) {
-                                    System.out.println(dateString + ": Event date must be a future date!");
+                                    System.out.println(dateString + ": eventcalendar.Event date must be a future date!");
                                 } else if (date.isMoreThan6MonthsAway()) {
-                                    System.out.println(dateString + ": Event date must be within 6 months!");
+                                    System.out.println(dateString + ": eventcalendar.Event date must be within 6 months!");
                                 } else {
                                     Event event = new Event(date, timeslot, locationstr, duration, contact);
 
@@ -79,16 +100,16 @@ public class EventOrganizer {
                                     //fix contains method
 
                                     if (added) {
-                                        System.out.println("Event added to the calendar.");
+                                        System.out.println("eventcalendar.Event added to the calendar.");
                                     } else {
                                         System.out.println("The event is already on the calendar.");
                                     }
                                 }
                             }
                         } catch (IllegalArgumentException e) {
-                            if (e.getMessage().contains("Timeslot")) {
+                            if (e.getMessage().contains("eventcalendar.Timeslot")) {
                                 System.out.println("Invalid time slot!");
-                            } else if (e.getMessage().contains("Location")) {
+                            } else if (e.getMessage().contains("eventcalendar.Location")) {
                                 System.out.println("Invalid location!");
                             } else {
                                 System.out.println("Invalid contact information!");
@@ -107,18 +128,19 @@ public class EventOrganizer {
                         if (!date.isValid()) {
                             System.out.println(dateString + ": Invalid calendar date!");
                         } else if (date.isFutureDate()) {
-                            System.out.println(dateString + ": Event date must be a future date!");
+                            System.out.println(dateString + ": eventcalendar.Event date must be a future date!");
                         } else if (date.isMoreThan6MonthsAway()) {
-                            System.out.println(dateString + ": Event date must be within 6 months!");
+                            System.out.println(dateString + ": eventcalendar.Event date must be within 6 months!");
                         } else {
                             // Create an event to compare for removal
-                            Event eventToRemove = new Event(date, Timeslot.valueOf(timeSlot.toUpperCase()), Location.valueOf(location.toUpperCase()),0,null);
+                            Event eventToRemove = new Event(date, Timeslot.valueOf(timeSlot.toUpperCase()),
+                                    Location.valueOf(location.toUpperCase()),0,null);
 
                             // Check if the event is in the calendar
                             boolean removed = eventCalender.remove(eventToRemove);
 
                             if (removed) {
-                                System.out.println("Event has been removed from the calendar!");
+                                System.out.println("eventcalendar.Event has been removed from the calendar!");
                             } else {
                                 System.out.println("Cannot remove; event is not in the calendar!");
                             }

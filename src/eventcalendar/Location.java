@@ -1,3 +1,9 @@
+package eventcalendar;
+/**
+ *  represents different event locations, with each location having a full name
+ * @Fraidoon Pourooshasb
+ * @Samman Pandey
+ */
 public enum Location {
     HLL114("Hill Center, Busch"),
     ARC103("Allison Road Classroom, Busch"),
@@ -11,6 +17,12 @@ public enum Location {
     Location(String fullName) {
         this.fullName = fullName;
     }
+
+    /**
+     * Get the campus part of the full location name.
+     *
+     * @return The campus name.
+     */
     public String getCampus() {
         String[] parts = fullName.split(", ");
         if (parts.length > 1) {
@@ -19,6 +31,11 @@ public enum Location {
         return "";
     }
 
+    /**
+     * Get the building part of the full location name.
+     *
+     * @return The building name.
+     */
     public String getBuilding() {
         String[] parts = fullName.split(", ");
         if (parts.length > 0) {
@@ -27,6 +44,12 @@ public enum Location {
         return "";
     }
 
+    /**
+     * Get a string representation of the location, including the enum
+     * and the full name of the location.
+     *
+     * @return A string representation of the location.
+     */
     @Override
     public String toString() {
         return "@" + name() + " (" + fullName + ")";
