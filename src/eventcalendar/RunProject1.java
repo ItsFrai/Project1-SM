@@ -7,8 +7,7 @@ package eventcalendar;// Press Shift twice to open the Search Everywhere dialog 
 //different campus locations listed below.
 /**
  * A driver class to run the project
- * @Fraidoon Pourooshasb
- * @Samman Pandey
+ * @author Fraidoon Pourooshasb, Samman Pandey
  */
 public class RunProject1 {
     public static void main(String[] args) {

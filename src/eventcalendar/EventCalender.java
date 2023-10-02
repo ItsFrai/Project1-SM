@@ -2,9 +2,7 @@ package eventcalendar;
 
 /**
  * A class that represents an event calendar for managing events.
- *
- * @author Fraidoon Pourooshasb
- * @author Samman Pandey
+ *@author Fraidoon Pourooshasb, Samman Pandey
  */
 public class EventCalender {
     private Event[] events; //the array holding the list of events

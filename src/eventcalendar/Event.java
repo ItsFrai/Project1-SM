@@ -4,9 +4,7 @@ package eventcalendar;
  * Represents an event with date, time, location, contact, and duration information.
  * This class defines an event with various attributes and provides methods for comparing events,
  * checking equality, and retrieving specific event details.
- *
- * @author Fraidoon Pourooshasb
- * @author Samman Pandey
+ * @author Fraidoon Pourooshasb, Samman Pandey
  */
 public class Event implements Comparable<Event> {
     private final Date date;// The date of the event

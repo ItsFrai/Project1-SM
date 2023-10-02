@@ -2,8 +2,8 @@ package eventcalendar;
 /**
  * This enum represents what the inputs "Morining", "Afternoon" and "Evening" and
  * turns them into integer time
- * @Fraidoon Pourooshasb
- * @Samman Pandey
+ *
+ * @author Fraidoon Pourooshasb, Samman Pandey
  */
 public enum Timeslot {
     MORNING(10, 30, "am"), AFTERNOON(2, 0, "pm"), EVENING(6, 30, "pm");

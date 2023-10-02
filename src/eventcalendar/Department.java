@@ -5,10 +5,8 @@ package eventcalendar;
  * Enum representing academic departments.
  * This enum defines departments along with their full names
  * and provides methods to retrieve department information.
- * @Fraidoon Pourooshasb
- * @Samman Pandey
+ * @author Fraidoon Pourooshasb, Samman Pandey
  */
-
 public enum Department {
     CS("Computer Science"), EE("Electrical Engineering"),
     ITI("Information Technology and Informatics"),

@@ -7,8 +7,7 @@ import java.util.Calendar;
  * Represents a date with year, month, and day attributes.
  * This class provides methods to work with dates, including validation,
  * checking if the date is in the future, and comparing dates.
- * @Fraidoon Pourooshasb
- * @Samman Pandey
+ * @author Fraidoon Pourooshasb, Samman Pandey
  */
 public class Date implements Comparable<Date> {
 

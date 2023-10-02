@@ -1,8 +1,7 @@
 package eventcalendar;
 /**
  *  represents different event locations, with each location having a full name
- * @Fraidoon Pourooshasb
- * @Samman Pandey
+ *@author Fraidoon Pourooshasb, Samman Pandey
  */
 public enum Location {
     HLL114("Hill Center, Busch"),
